@@ -106,7 +106,7 @@ steps:
         IFS="," read -ra BRANCH_FILTERS \<<< "<< parameters.only_for_branches >>"
 
         for i in "${BRANCH_FILTERS[@]}"; do
-          if [ "${i}" == "${CIRCLE_BRANCH}" ]; then
+          if [[ ${CIRCLE_BRANCH} =~ $i ]]; then
             current_branch_in_filter=true
           fi
         done
